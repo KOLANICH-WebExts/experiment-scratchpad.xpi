@@ -1,0 +1,46 @@
+[
+	{
+		"namespace" : "experiments.scratchpad",
+		"description" : "Open Scratchpad",
+		"permissions" : ["experiments.scratchpad"],
+		"functions" : [
+			{
+				"name" : "open",
+				"type" : "function",
+				"description" : "Opens Scratchpad. Returns promise returning string.",
+				"parameters" : [
+					{
+						"type": "string",
+						"name": "sourceCode",
+						"description": "Source code to show in scratchpad window",
+						// contrary to the docs all the optional arguments in schema must have a "default" property
+						"optional": true,
+						"default": ""
+					},
+					{
+						"type": "string",
+						"name": "title",
+						"description": "Text to show in title bar",
+						"optional": true,
+						"default": ""
+					},
+					{
+						"type": "string",
+						"name": "status",
+						"description": "Text to show in status bar",
+						"optional": true,
+						"default": ""
+					},
+					{
+						"type": "boolean",
+						"name": "prettyPrint",
+						"description": "Whether sources should be prettified automatically on load and unload.",
+						"optional": true,
+						"default": false
+					}
+				],
+				"async": true
+			}
+		]
+	}
+]

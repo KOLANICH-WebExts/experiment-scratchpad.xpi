@@ -1,0 +1,33 @@
+{
+	"manifest_version" : 2
+	,"name" : "Inject Scratchpad source"
+	,"description" : "Injects the source edited in Scratchpad into the current webpage. A demo extension for scratchpad WebExtensions experiment API."
+	,"version" : "0.0"
+
+	,"applications" : {
+		"gecko" : {
+			"id" : "open-scratchpad@experiments.addons.mozilla.org"
+		}
+	}
+	,"icons":{
+		"16": "tool-scratchpad.svg",
+		"32": "tool-scratchpad.svg",
+		"48": "tool-scratchpad.svg",
+		"96": "tool-scratchpad.svg" //chrome://devtools/skin/images/tool-scratchpad.svg
+	}
+	,"background" : {
+		"scripts" : ["background.js"]
+	}
+	,"browser_action" : {
+		"default_icon" : {
+			"16": "tool-scratchpad.svg",
+			"32": "tool-scratchpad.svg",
+			"48": "tool-scratchpad.svg",
+			"96": "tool-scratchpad.svg" //chrome://devtools/skin/images/tool-scratchpad.svg
+		},
+		"default_title" : "Open ScratchPad!",
+		"browser_style" : true
+	}
+	,"permissions" : ["tabs", "https://*/", "http://*/", "experiments.scratchpad"] //it cannot be an optional permission for now :( This makes debugging a nightmare: I have to reinstall API first, and addon using it second
+	//,"optional_permissions" : ["experiments.scratchpad"] // browser.permissions.request({permissions: ['experiments.scratchpad'],})
+}

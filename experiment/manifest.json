@@ -1,0 +1,34 @@
+{
+	// manifest and schema can contain single-line comments.
+	"manifest_version" : 2
+	,"name" : "Scratchpad WebExtensions API"
+	,"description" : "Passes API for opening ScratchPad into WebExtensions"
+	,"version" : "0.0"
+	,"developer": {
+		"name": "KOLANICH",
+		"url": "https://github.com/KOLANICH"
+	}
+	,"applications" : {
+		"gecko" : {
+			//the extension MUST have the id of format <permission name>@experiments.addons.mozilla.org, permission name is converted into addon identifier on import an extension requiring `experiments.<permission name>`, this is hardcoded: https://dxr.mozilla.org/mozilla-central/source/toolkit/components/extensions/Extension.jsm#660
+			//If this rule is violated, you won't see an error on installation of the API addon, but the addons using this permission won't be installed with ambigous error "incompatible";
+			"id" : "scratchpad@experiments.addons.mozilla.org"
+		}
+	}
+	,"icons":{
+		"16": "tool-scratchpad.svg", //chrome://devtools/skin/images/tool-scratchpad.svg but it doesn't work
+		"32": "tool-scratchpad.svg",
+		"48": "tool-scratchpad.svg",
+		"96": "tool-scratchpad.svg"
+	}
+	,"experiment_apis" : {
+		"identifierOfVariable1" : { // identifier from the script
+			"schema" : "schema.json", // Schema is cached, you have to restart the browser if you encounter any errors in it.
+			"parent" : {
+				"scopes" : ["addon_parent"],
+				"script" : "api.js",
+				"paths" : [["experiments", "scratchpad"]] //must begin from "experiments" and must match to permission name 
+			}
+		}
+	}
+}
